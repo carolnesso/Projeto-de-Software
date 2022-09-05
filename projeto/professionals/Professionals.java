@@ -6,11 +6,28 @@ import java.util.Map;
 public class Professionals {
     int id;
     String type;
-    Map<Integer, Boolean> actvsParticipating = new HashMap<>();
-    Map<Integer, Boolean> projcsParticipating = new HashMap<>();
+
+
 
     public Professionals(int id, String type) {
         this.id = id;
         this.type = type;
     }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    
 }
