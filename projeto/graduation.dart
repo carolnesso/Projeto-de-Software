@@ -7,8 +7,8 @@ class Graduation extends Student {
     required String login,
     required String password,
     required String recoveryKey,
-    required researchGrantBegin,
-    required researchGrantDeadline,
+    researchGrantBegin,
+    researchGrantDeadline,
   }) : super(
           id: id,
           login: login,

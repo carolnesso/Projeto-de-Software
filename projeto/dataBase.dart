@@ -1,8 +1,9 @@
+import 'student.dart';
 import 'user.dart';
 
 abstract class DataBase {
-  static List<User> usersDb = <User>[
-    User(
+  static List<IUser> usersDb = <IUser>[
+    Student(
       id: "18211736",
       login: "01739793439",
       password: "batata",

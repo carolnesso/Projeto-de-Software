@@ -1,6 +1,6 @@
 import 'user.dart';
 
-class Student implements IUser {
+class Professor implements IUser {
   String? _id; //for the id, I've use the college registration number
   String? _login; //for login, I've use the e-mail address
   String? _password;
@@ -19,9 +19,8 @@ class Student implements IUser {
   get researchGrantBegin => this._researchGrantBegin;
   get researchGrantDeadline => this._researchGrantDeadline;
 
-  // ####and of getters and setters####
-
-  Student({
+  String type = "Master degree student";
+  Professor({
     required String id,
     required String login,
     required String password,
@@ -57,11 +56,11 @@ class Student implements IUser {
 
   @override
   set setResearchGrantBegin(String newResearchGrantBegin) {
-    this._researchGrantBegin = researchGrantBegin;
+    this._researchGrantBegin = newResearchGrantBegin;
   }
 
   @override
   set setResearchGrantDeadline(String newResearchGrantDeadline) {
-    this._researchGrantDeadline = researchGrantDeadline;
+    this._researchGrantDeadline = newResearchGrantDeadline;
   }
 }

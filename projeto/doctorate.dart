@@ -1,14 +1,14 @@
 import 'student.dart';
 
-class Doctorate_degree extends Student {
+class DoctorateDegree extends Student {
   String type = "Doctorate degree student";
-  Doctorate_degree({
+  DoctorateDegree({
     required String id,
     required String login,
     required String password,
     required String recoveryKey,
-    required researchGrantBegin,
-    required researchGrantDeadline,
+    researchGrantBegin,
+    researchGrantDeadline,
   }) : super(
           id: id,
           login: login,
