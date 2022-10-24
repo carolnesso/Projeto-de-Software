@@ -1,3 +1,4 @@
+import 'project.dart';
 import 'student.dart';
 import 'user.dart';
 
@@ -10,4 +11,6 @@ abstract class DataBase {
       recoveryKey: "hannahbanana",
     ),
   ];
+
+  static List<Project> activeProjcts = <Project>[];
 }
