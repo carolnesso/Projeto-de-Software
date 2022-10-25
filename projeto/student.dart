@@ -26,14 +26,10 @@ class Student implements IUser {
     required String login,
     required String password,
     required String recoveryKey,
-    researchGrantBegin,
-    researchGrantDeadline,
   })  : _id = id,
         _login = login,
         _password = password,
-        _recoveryKey = recoveryKey,
-        _researchGrantBegin = researchGrantBegin,
-        _researchGrantDeadline = researchGrantDeadline;
+        _recoveryKey = recoveryKey;
 
   @override
   set setId(String newId) {

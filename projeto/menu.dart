@@ -3,6 +3,9 @@ import 'doctorate.dart';
 import 'graduation.dart';
 import 'master.dart';
 import 'professor.dart';
+import 'project.dart';
+import 'saveDB.dart';
+import 'singleton.dart';
 import 'student.dart';
 import 'user.dart';
 import 'dataBase.dart';
@@ -103,6 +106,7 @@ class Menu {
           //if my class wasn't abstract, i will set db as was written bellow
           // DataBase newDb = DataBase();
           // newDb.setUsersDb = newUser;
+          SaveDB.saveDB();
           continue;
         }
         //recover password
@@ -111,10 +115,18 @@ class Menu {
           String? recoveryKey = stdin.readLineSync();
           DataBase.usersDb.forEach(
             (element) {
-              if (element.recorveryKey == recoveryKey) {}
+              if (element.recorveryKey == recoveryKey) {
+                print("Digite sua nova senha:\n");
+                String newPassword = stdin.readLineSync()!;
+                element.setPassword = newPassword;
+              }
             },
           );
+          SaveDB.saveDB();
+          continue;
         }
+
+        // print(DataBase.usersDb[0].recorveryKey);
 
         //close
         if (input == "0") {
@@ -136,7 +148,65 @@ class Menu {
         String? input = stdin.readLineSync();
 
         if (input == "1") {
-          continue;
+          print(
+              "Você escolheu a área de projetos.\nO que você deseja fazer?:\n");
+          print("1 - Criar um projeto;");
+          print("2 - Editar um projeto;");
+          print("3 - Adicionar um aluno à um projeto;");
+          print("4 - Adicionar uma atividade à um projeto;");
+          String? newInput = stdin.readLineSync();
+
+          // create a new project;
+          if (newInput == "1") {
+            print(
+                "Você escolheu criar projeto. Digite as seguintes informações pedidas:");
+            print("Insira o nome do projeto:\n");
+            String title = stdin.readLineSync()!;
+            print("Insira uma descrição para o projeto:");
+            String description = stdin.readLineSync()!;
+            print("Insira o ID do professor coordenador");
+            String coordinator = stdin.readLineSync()!;
+            late Project newProject;
+            newProject = Project(
+              title: title,
+              id: currenteProjectID,
+              description: description,
+              coordinator: coordinator,
+              beginDate: DateTime.now(),
+            );
+            currenteProjectID++;
+
+            DataBase.activeProjcts.add(newProject);
+            SaveDB.saveDB();
+            continue;
+          }
+
+          // edit a existent project;
+          if (newInput == "2") {
+            continue;
+          }
+
+          // add students a select project;
+          if (newInput == "3") {
+            print(
+                "Você escolheu adicionar um aluno à um projeto, por favor insira a ID do projeto e o ID do aluno que deseja adicionar:\n");
+            int idProject = int.parse(stdin.readLineSync()!);
+            String idStudent = stdin.readLineSync()!;
+            DataBase.activeProjcts.forEach((element) {
+              print(element.id);
+              if (element.id == idProject) {
+                IUser? student = DataBase.usersDb
+                    .firstWhere((element) => element.id == idStudent);
+                element.studentsPresents.add(student);
+              }
+            });
+            SaveDB.saveDB();
+          }
+
+          // add an activities a select projects;
+          if (newInput == "4") {
+            continue;
+          }
         }
 
         if (input == "2") {
