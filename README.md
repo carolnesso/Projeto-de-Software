@@ -10,6 +10,7 @@ Materia ministrada pelo professor doutor [Baldoino Fonseca](https://scholar.goog
 Como modo de avaliação da matéria de projeto de software, é pedido para que façamos um software para gerenciamento de projetos de extenção. Para obtermos notas é necessário que cumpramos com os
 seguintes pré-requisitos:
 
+:white_check_mark:
 
 [1] Criar e remover informações sobre projetos, usuários e atividades;
 

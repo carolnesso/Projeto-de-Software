@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'dataBase.dart';
 
 abstract class SaveDB {
@@ -7,16 +6,43 @@ abstract class SaveDB {
     String db = '';
     DataBase.usersDb.forEach((element) {
       db = db +
-          '${element.id}:\n ${element.login}\n ${element.password}\n ${element.recorveryKey}\n ${element.researchGrantBegin}\n ${element.researchGrantDeadline}\n\n';
+          'Usuário ${element.id}:\n' +
+          ' Login: ${element.login}\n' +
+          ' Senha: ${element.password}\n' +
+          ' Chave de recuperação: ${element.recorveryKey}\n' +
+          ' Inicio da bolsa de pesquisa: ${element.researchGrantBegin}\n' +
+          ' Final da bolsa de pesquisa: ${element.researchGrantDeadline}\n\n';
     });
 
     DataBase.activeProjcts.forEach((element) {
       String studentListString = '';
+      String activitesListString = '';
       element.studentsPresents.forEach((element) {
         studentListString = studentListString + '${element.id}, ';
       });
+
+      element.projectActivities.forEach((element) {
+        activitesListString = activitesListString + '${element.id}, ';
+      });
       db = db +
-          '${element.id}:\n ${element.title}\n ${element.description}\n ${element.coordinator}\n ${element.beginDate}\n ${element.endDate ?? ''}\n ${studentListString}\n\n';
+          'Projeto ${element.id}:\n' +
+          ' Título: ${element.title}\n' +
+          ' Descrição: ${element.description}\n' +
+          ' ID do Orientador: ${element.advisor}\n' +
+          ' Data de Início: ${element.beginDate}\n' +
+          ' Status do projeto: ${element.status}\n' +
+          ' Data de conclusão: ${element.endDate ?? ''}\n' +
+          ' ID dos estudantes do projeto: ${studentListString}\n' +
+          ' ID das atividades do projeto: ${activitesListString}\n\n';
+    });
+
+    DataBase.activeActivities.forEach((element) {
+      String activitiesListString = '';
+      db = db +
+          'Atividade ${element.id}:\n' +
+          ' Título: ${element.title}\n' +
+          ' Descrição: ${element.description}\n' +
+          ' Orientador: ${element.advisor}\n\n';
     });
 
     final filename = 'DB.txt';

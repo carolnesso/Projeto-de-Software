@@ -1,15 +1,12 @@
-00:
- 11
- 22
- hannahbanana
- null
- null
+Usuário 00:
+ Login: 11
+ Senha: 22
+ Chave de recuperação: hannahbanana
+ Inicio da bolsa de pesquisa: null
+ Final da bolsa de pesquisa: null
 
-0:
- Projeto de desenvolvimento mobile
- Aprender a desenvolver mobile com Flutter
- 18211785
- 2022-10-25 16:58:40.398
- 
- 00, 
+Atividade 0:
+ Título: 0
+ Descrição: 0
+ Orientador: 00
 

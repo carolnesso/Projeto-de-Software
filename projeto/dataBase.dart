@@ -1,4 +1,4 @@
-import 'activitie.dart';
+import 'activity.dart';
 import 'project.dart';
 import 'singleton.dart';
 import 'student.dart';
@@ -15,14 +15,24 @@ abstract class DataBase {
   ];
 
   static List<Project> activeProjcts = <Project>[
-    Project(
-        title: "Projeto de desenvolvimento mobile",
-        id: currenteProjectID,
-        description: "Aprender a desenvolver mobile com Flutter",
-        coordinator: "18211785",
-        beginDate: DateTime.now()),
+    // Project(
+    //   title: "Projeto de desenvolvimento mobile",
+    //   id: currenteProjectID,
+    //   description: "Aprender a desenvolver mobile com Flutter",
+    //   advisor: "00",
+    //   beginDate: DateTime.now(),
+    //   status: "Iniciado",
+    // ),
   ];
-  static List<Activitie> activeActvs = <Activitie>[
-    Activitie(),
+
+  static List<Activity> activeActivities = <Activity>[
+    // Activity(
+    //   title: "Oficina de Dart",
+    //   id: currrentActivitiesID,
+    //   description:
+    //       "Básica introdução ao dart para futura aprofundamento em Flutter",
+    //   advisor: "00",
+    //   beginDate: DateTime.now(),
+    // ),
   ];
 }

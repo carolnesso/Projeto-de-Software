@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'activity.dart';
 import 'doctorate.dart';
 import 'graduation.dart';
 import 'master.dart';
@@ -6,13 +7,13 @@ import 'professor.dart';
 import 'project.dart';
 import 'saveDB.dart';
 import 'singleton.dart';
-import 'student.dart';
 import 'user.dart';
 import 'dataBase.dart';
 
 class Menu {
   IUser? section;
   bool isRunning = true;
+
   Menu() {
     while (isRunning) {
       while (section == null) {
@@ -125,9 +126,6 @@ class Menu {
           SaveDB.saveDB();
           continue;
         }
-
-        // print(DataBase.usersDb[0].recorveryKey);
-
         //close
         if (input == "0") {
           isRunning = false;
@@ -139,14 +137,15 @@ class Menu {
         print("1 - Área projetos");
         print("2 - Área atividades");
         print("3 - Área do usuário");
-        print("4 - Remover um usuário");
-        print("5 - Gerar relatório de projeto");
-        print("6 - Consultas");
-        print("7 - Realizar fazer e desfazer");
+        print("4 - Gerar relatório de projeto");
+        print("5 - Consultas");
+        print("6 - Realizar fazer e desfazer");
         print("\n");
         print("0 - LogOut");
         String? input = stdin.readLineSync();
 
+        // ###### Project area ######
+        // TODO: arrumar currente ID do projeto
         if (input == "1") {
           print(
               "Você escolheu a área de projetos.\nO que você deseja fazer?:\n");
@@ -164,17 +163,21 @@ class Menu {
             String title = stdin.readLineSync()!;
             print("Insira uma descrição para o projeto:");
             String description = stdin.readLineSync()!;
-            print("Insira o ID do professor coordenador");
-            String coordinator = stdin.readLineSync()!;
+            print("Insira o ID do professor orientador");
+            String advisor = stdin.readLineSync()!;
             late Project newProject;
             newProject = Project(
               title: title,
               id: currenteProjectID,
               description: description,
-              coordinator: coordinator,
+              advisor: advisor,
               beginDate: DateTime.now(),
+              status: "Em processo de criação",
             );
-            currenteProjectID++;
+            print("Seu ID de projeto é: " +
+                currenteProjectID.toString() +
+                "\nNecessário salvá-lo para futuras alteracões e/ou consultas.\n");
+            currenteProjectID = currenteProjectID + 1;
 
             DataBase.activeProjcts.add(newProject);
             SaveDB.saveDB();
@@ -182,6 +185,7 @@ class Menu {
           }
 
           // edit a existent project;
+          // TODO: criar edicão de projeto
           if (newInput == "2") {
             continue;
           }
@@ -203,14 +207,71 @@ class Menu {
             SaveDB.saveDB();
           }
 
-          // add an activities a select projects;
+          // add an activities a select project;
           if (newInput == "4") {
-            continue;
+            print(
+                "Você escolheu adicionar uma atividade à um projeto, por favor insira a ID do projeto e o ID da atividade que deseja adicionar:\n");
+            int idProject = int.parse(stdin.readLineSync()!);
+            int idActivity = int.parse(stdin.readLineSync()!);
+            DataBase.activeProjcts.forEach((element) {
+              if (element.id == idProject) {
+                Activity? activity = DataBase.activeActivities
+                    .firstWhere((element) => element.id == idActivity);
+                element.projectActivities.add(activity);
+              }
+            });
+            SaveDB.saveDB();
           }
         }
 
+        //###### Activities area ######
+        // TODO: arrumar currente ID das atividades
         if (input == "2") {
-          continue;
+          print(
+              "Você escolheu a área de atividades.\nO que você deseja fazer?:\n");
+          print("1 - Criar uma atividade;");
+          print("2 - Editar uma ativiade;");
+          print("3 - Adicionar um aluno à uma atividade;");
+          String? newInput = stdin.readLineSync();
+
+          // create a new activity
+          if (newInput == "1") {
+            print(
+                "Você escolheu criar atividade. Digite as seguintes informações pedidas:");
+            print("Insira o nome da atividade:");
+            String title = stdin.readLineSync()!;
+            print("Insira uma descrição para a atividade:");
+            String description = stdin.readLineSync()!;
+            print("Insira o ID do professor orientador");
+            String advisor = stdin.readLineSync()!;
+            late Activity newActivity;
+            newActivity = Activity(
+              title: title,
+              id: currrentActivitiesID,
+              description: description,
+              advisor: advisor,
+              beginDate: DateTime.now(),
+            );
+            print("Seu ID de atividade é: " +
+                currrentActivitiesID.toString() +
+                "\nNecessário salvá-lo para futuras alteracões e/ou consultas.\n");
+            currrentActivitiesID = currrentActivitiesID + 1;
+
+            DataBase.activeActivities.add(newActivity);
+            SaveDB.saveDB();
+            continue;
+          }
+
+          // edit an existing activity
+          // TODO: criar edicão de atividade existente
+          if (newInput == "2") {
+            continue;
+          }
+
+          // add a student to an activity
+          if (newInput == "3") {
+            continue;
+          }
         }
 
         if (input == "0") {
