@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dataBase.dart';
 
 abstract class SaveDB {
-  static saveDB() async {
+  static writeDB() async {
     String db = '';
     DataBase.usersDb.forEach((element) {
       db = db +
@@ -28,7 +28,7 @@ abstract class SaveDB {
           'Projeto ${element.id}:\n' +
           ' Título: ${element.title}\n' +
           ' Descrição: ${element.description}\n' +
-          ' ID do Orientador: ${element.advisor}\n' +
+          ' ID do Orientador: ${element.advisor.id}\n' +
           ' Data de Início: ${element.beginDate}\n' +
           ' Status do projeto: ${element.status}\n' +
           ' Data de conclusão: ${element.endDate ?? ''}\n' +

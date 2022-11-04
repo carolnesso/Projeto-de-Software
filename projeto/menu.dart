@@ -21,6 +21,7 @@ class Menu {
   void _run() {
     while (isRunning) {
       while (section == null) {
+        // ###### start menu ######
         print(
             "Bem vindo ao gerenciador de projetos de extenção da UFAL.\nO que deseja fazer hoje?");
         print("\n");
@@ -31,16 +32,16 @@ class Menu {
 
         String? input = stdin.readLineSync();
 
-        // ######Login area######
+        // ###### Login area ######
         if (input == "1") {
-          print("Digite seu CPF:");
+          print("Digite seu login (CPF/email):");
           String? login = stdin.readLineSync();
           print("Digite sua senha:");
           String? password = stdin.readLineSync();
           DataBase.usersDb.forEach(
             (element) {
               if (element.login == login && element.password == password) {
-                print(element.id + "\n");
+                print("Usuário com o ID: " + element.id + " está logado.\n");
                 section = element;
               }
             },
@@ -48,7 +49,7 @@ class Menu {
           continue;
         }
 
-        //create a new user
+        // ###### create a new user ######
         if (input == "2") {
           print(
               "Você selecionou criar um usuário\nPor favor, insira os dados pedidos a seguir:");
@@ -77,7 +78,7 @@ class Menu {
               recoveryKey: recoveryKey!,
             );
           }
-          // graduation student
+          // graduation's degree student
           if (type == "2") {
             newUser = Graduation(
               id: id!,
@@ -86,8 +87,7 @@ class Menu {
               recoveryKey: recoveryKey!,
             );
           }
-
-          //
+          // Master's Degree student
           if (type == "3") {
             newUser = MastersDegree(
               id: id!,
@@ -96,7 +96,7 @@ class Menu {
               recoveryKey: recoveryKey!,
             );
           }
-
+          // PhD student
           if (type == "4") {
             newUser = DoctorateDegree(
               id: id!,
@@ -111,9 +111,10 @@ class Menu {
           //if my class wasn't abstract, i will set db as was written bellow
           // DataBase newDb = DataBase();
           // newDb.setUsersDb = newUser;
-          SaveDB.saveDB();
+          SaveDB.writeDB();
           continue;
         }
+
         //recover password
         if (input == "3") {
           print("Digite sua chave de recuperação:");
@@ -127,9 +128,10 @@ class Menu {
               }
             },
           );
-          SaveDB.saveDB();
+          SaveDB.writeDB();
           continue;
         }
+
         //close
         if (input == "0") {
           isRunning = false;
@@ -137,6 +139,7 @@ class Menu {
         }
       }
 
+      // ###### login user menu ######
       while (section != null) {
         print("1 - Área projetos");
         print("2 - Área atividades");
@@ -149,7 +152,6 @@ class Menu {
         String? input = stdin.readLineSync();
 
         // ###### Project area ######
-        // TODO: arrumar currente ID do projeto
         if (input == "1") {
           print(
               "Você escolheu a área de projetos.\nO que você deseja fazer?:\n");
@@ -170,13 +172,15 @@ class Menu {
             print("Insira o ID do professor orientador");
             String advisor = stdin.readLineSync()!;
             Professor? professor;
-            DataBase.usersDb.forEach((element) {
-              if (element.id == advisor) {
-                if (element.runtimeType == Professor) {
-                  professor = element as Professor;
+            DataBase.usersDb.forEach(
+              (element) {
+                if (element.id == advisor) {
+                  if (element.runtimeType == Professor) {
+                    professor = element as Professor;
+                  }
                 }
-              }
-            });
+              },
+            );
             if (professor == null) {
               print(
                   "O usuário não é um professor ou não foi encontrado.\nTente novamente.\n");
@@ -197,7 +201,7 @@ class Menu {
             currenteProjectID = currenteProjectID + 1;
 
             DataBase.activeProjects.add(newProject);
-            SaveDB.saveDB();
+            SaveDB.writeDB();
             continue;
           }
 
@@ -214,6 +218,7 @@ class Menu {
                   print("2 - Alterar descricão");
                   print("3 - Alterar coordenador do projeto");
                   print("4 - Remover um aluno do projeto");
+                  print("5 - Marcar projeto como concluído");
                   String? newInput = stdin.readLineSync();
 
                   // edit project title
@@ -221,20 +226,62 @@ class Menu {
                     print("Digite o novo título do projeto");
                     String? newTile = stdin.readLineSync();
                     element.title = newTile!;
-                    SaveDB.saveDB();
-
+                    SaveDB.writeDB();
                   }
                   // edit project description
                   if (newInput == "2") {
                     print("Digite a nova descrição");
                     String? newDesciption = stdin.readLineSync();
                     element.description = newDesciption!;
-                    SaveDB.saveDB();
+                    SaveDB.writeDB();
                   }
                   // change advisor
-                  if(newInput == "3"){
-                    print("");
+                  if (newInput == "3") {
+                    print("Digite o ID do novo professor orientador");
+                    String? advisor = stdin.readLineSync();
+                    Professor? professor;
+                    DataBase.usersDb.forEach(
+                      (element) {
+                        if (element.id == advisor) {
+                          if (element.runtimeType == Professor) {
+                            professor = element as Professor;
+                          }
+                        }
+                      },
+                    );
+                    if (professor == null) {
+                      print(
+                          "O usuário não é um professor ou não foi encontrado.\nTente novamente.\n");
+                    } else {
+                      element.advisor = professor!;
+                    }
+                    SaveDB.writeDB();
                   }
+                  // remove a user from the project
+                  // TODO arrumar a parte de remover usuário do projeto
+                  if (newInput == "4") {
+                    // print(
+                    //     "Você escolheu remover um usuário do projeto.\nPor favor, insira o ID do usuário.\n");
+                    // String? userID = stdin.readLineSync();
+                    // element.studentsPresents.forEach(
+                    //   (users) {
+                    //     if(users.id == userID){
+                    //       element.studentsPresents.pop();
+                    //     }
+                    //   },
+                    // );
+                  }
+                  // mark project as complete
+                  if (newInput == "5") {
+                    if (element.status == ProjectStatus.CONCLUDED) {
+                      print(
+                          "O projeto em questão já foi concluído.\nPor favor, verifique o ID inserido e tente novamente.\n");
+                    } else {
+                      element.status = ProjectStatus.CONCLUDED;
+                      element.endDate = DateTime.now();
+                    }
+                  }
+                  SaveDB.writeDB();
                 }
               },
             );
@@ -257,7 +304,7 @@ class Menu {
                 }
               },
             );
-            SaveDB.saveDB();
+            SaveDB.writeDB();
           }
 
           // add an activities a select project;
@@ -276,12 +323,11 @@ class Menu {
                 }
               },
             );
-            SaveDB.saveDB();
+            SaveDB.writeDB();
           }
         }
 
         // ###### Activities area ######
-        // TODO: arrumar currente ID das atividades
         if (input == "2") {
           print(
               "Você escolheu a área de atividades.\nO que você deseja fazer?:\n");
@@ -301,13 +347,16 @@ class Menu {
             print("Insira o ID do professor orientador");
             String advisor = stdin.readLineSync()!;
             Professor? professor;
-            DataBase.usersDb.forEach((element) {
-              if (element.id == advisor) {
-                if (element.runtimeType == Professor) {
-                  professor = element as Professor;
+            DataBase.usersDb.forEach(
+              (element) {
+                if (element.id == advisor) {
+                  if (element.runtimeType == Professor) {
+                    professor = element as Professor;
+                  }
                 }
-              }
-            });
+              },
+            );
+
             if (professor == null) {
               print(
                   "O usuário não é um professor ou não foi encontrado.\nTente novamente.\n");
@@ -327,7 +376,7 @@ class Menu {
             currrentActivitiesID = currrentActivitiesID + 1;
 
             DataBase.activeActivities.add(newActivity);
-            SaveDB.saveDB();
+            SaveDB.writeDB();
             continue;
           }
 
@@ -343,22 +392,28 @@ class Menu {
                 "Você escolheu adicionar um aluno à uma atividade, por favor insira a ID da atividade e o ID do aluno que deseja adicionar:\n");
             int idActivity = int.parse(stdin.readLineSync()!);
             String idStudent = stdin.readLineSync()!;
-            DataBase.activeActivities.forEach((element) {
-              print(element.id);
-              if (element.id == idActivity) {
-                IUser? student = DataBase.usersDb
-                    .firstWhere((element) => element.id == idStudent);
-                element.studentsPresents.add(student);
-              }
-            });
-            DataBase.activeProjects.forEach((element) {
-              element.projectActivities.forEach((activity) {
-                if (activity.id == idActivity) {
-                  element.updateStatus();
+            DataBase.activeActivities.forEach(
+              (element) {
+                print(element.id);
+                if (element.id == idActivity) {
+                  IUser? student = DataBase.usersDb
+                      .firstWhere((element) => element.id == idStudent);
+                  element.studentsPresents.add(student);
                 }
-              });
-            });
-            SaveDB.saveDB();
+              },
+            );
+            DataBase.activeProjects.forEach(
+              (element) {
+                element.projectActivities.forEach(
+                  (activity) {
+                    if (activity.id == idActivity) {
+                      element.updateStatus();
+                    }
+                  },
+                );
+              },
+            );
+            SaveDB.writeDB();
           }
         }
 

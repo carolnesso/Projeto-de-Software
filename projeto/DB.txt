@@ -8,19 +8,17 @@ Usuário 00:
 Usuário 18211736:
  Login: carolnesso
  Senha: carola
- Chave de recuperação: hannahbanana
+ Chave de recuperação: hannah
  Inicio da bolsa de pesquisa: null
  Final da bolsa de pesquisa: null
 
 Projeto 0:
- Título: novo nome
- Descrição: testar alteraćão de título
- ID do Orientador: Instance of 'Professor'
- Data de Início: 2022-11-03 22:55:58.128508
- Status do projeto: ProjectStatus.INITIATED
- Data de conclusão: 
+ Título: teste
+ Descrição: testar status concluído
+ ID do Orientador: 18211736
+ Data de Início: 2022-11-04 01:11:50.873967
+ Status do projeto: ProjectStatus.CONCLUDED
+ Data de conclusão: 2022-11-04 01:12:06.380350
  ID dos estudantes do projeto: 
  ID das atividades do projeto: 
-
-
 
