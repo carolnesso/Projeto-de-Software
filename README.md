@@ -1,13 +1,13 @@
 # Projeto de Software
 
 ## Sobre o curso
-Matéria do curso de ciência da computação da Universidade Federal de Alagoas (**UFAL**). Visando o ensinamento de Programação Orientada a Objetos (POO), o curso é ministrado em Java podendo ter seu projeto final feita em outra linguagem, desde que tenha sido acertado préviamente com o professor.
+Matéria do curso de ciência da computação da Universidade Federal de Alagoas (**UFAL**). Visando o ensinamento de Programação Orientada a Objetos (POO), o curso é ministrado em Java podendo ter seu projeto final feita em outra linguagem, desde que tenha sido acertado previamente com o professor.
 Materia ministrada pelo professor doutor [Baldoino Fonseca](https://scholar.google.com.br/citations?user=qvID9jQAAAAJ&hl=pt-BR).
 
-## Idéia
+## Ideia
 ---
 
-Como modo de avaliação da matéria de projeto de software, é pedido para que façamos um software para gerenciamento de projetos de extenção. Para obtermos notas é necessário que cumpramos com os
+Como modo de avaliação da matéria de projeto de software, é pedido para que façamos um software para gerenciamento de projetos de extensão. Para obtermos notas é necessário que cumpramos com os
 seguintes pré-requisitos:
 
 :white_check_mark: Criar e remover informações sobre projetos, usuários e atividades;
