@@ -1,12 +1,11 @@
 import 'activity.dart';
+import 'professor.dart';
 import 'project.dart';
-import 'singleton.dart';
-import 'student.dart';
 import 'user.dart';
 
 abstract class DataBase {
   static List<IUser> usersDb = <IUser>[
-    Student(
+    Professor(
       id: "00",
       login: "11",
       password: "22",
