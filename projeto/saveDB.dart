@@ -7,7 +7,7 @@ abstract class SaveDB {
     DataBase.usersDb.forEach(
       (element) {
         db = db +
-            'Usuário ${element.id}:\n' +
+            'Usuário ${element.runtimeType} ${element.id}:\n' +
             ' Login: ${element.login}\n' +
             ' Senha: ${element.password}\n' +
             ' Chave de recuperação: ${element.recoveryKey}\n' +
