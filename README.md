@@ -10,15 +10,13 @@ Materia ministrada pelo professor doutor [Baldoino Fonseca](https://scholar.goog
 Como modo de avaliação da matéria de projeto de software, é pedido para que façamos um software para gerenciamento de projetos de extenção. Para obtermos notas é necessário que cumpramos com os
 seguintes pré-requisitos:
 
-:white_check_mark:
+:white_check_mark: Criar e remover informações sobre projetos, usuários e atividades;
 
-[1] Criar e remover informações sobre projetos, usuários e atividades;
+:white_check_mark: Edição de informações sobre projetos, usuários e atividades;
 
-[2] Edição de informações sobre projetos, usuários e atividades;
+:white_check_mark: Permitir a associação de usuários aos projetos e atividades, e vice-versa.
 
-[3] Permitir a associação de usuários aos projetos e atividades, e vice-versa.
-
-[4] Criação e gerenciamento de _status_ do projeto
+:white_check_mark: Criação e gerenciamento de _status_ do projeto
 
 * “Em processo de criação” para “Iniciado”. O coordenador deve poder iniciar uma criação apenas se constarem todas as informações básicas. 
 * “Iniciado” para “Em andamento”. O coordenador deve poder confirmar a alocação.
