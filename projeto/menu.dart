@@ -3,6 +3,7 @@ import 'activity.dart';
 import 'doctorate.dart';
 import 'graduation.dart';
 import 'master.dart';
+import 'professional.dart';
 import 'professor.dart';
 import 'project.dart';
 import 'saveDB.dart';
@@ -67,6 +68,7 @@ class Menu {
           print("2 - Aluno de graduação;");
           print("3 - Aluno de mestrado;");
           print("4 - Aluno de doutorado;");
+          print("5 - Profissional;");
           String? type = stdin.readLineSync();
           late IUser newUser;
           // professor
@@ -105,6 +107,14 @@ class Menu {
               recoveryKey: recoveryKey!,
             );
           }
+          // Professional
+          if (type == "5") {
+            newUser = Professional(
+                id: id!,
+                login: login!,
+                password: password!,
+                recoveryKey: recoveryKey!);
+          }
           print("Pronto! Novo usuário criado com sucesso!");
 
           DataBase.usersDb.add(newUser);
@@ -121,7 +131,7 @@ class Menu {
           String? recoveryKey = stdin.readLineSync();
           DataBase.usersDb.forEach(
             (element) {
-              if (element.recorveryKey == recoveryKey) {
+              if (element.recoveryKey == recoveryKey) {
                 print("Digite sua nova senha:\n");
                 String newPassword = stdin.readLineSync()!;
                 element.setPassword = newPassword;
@@ -159,6 +169,7 @@ class Menu {
           print("2 - Editar um projeto;");
           print("3 - Adicionar um aluno à um projeto;");
           print("4 - Adicionar uma atividade à um projeto;");
+          print("5 - Adicionar um profissional ao projeto");
           String? newInput = stdin.readLineSync();
 
           // create a new project;
@@ -206,7 +217,6 @@ class Menu {
           }
 
           // edit a existent project;
-          // TODO: criar edicão de projeto
           if (newInput == "2") {
             print("Insira a ID do projeto que deseja editar");
             int idProject = int.parse(stdin.readLineSync()!);
@@ -325,6 +335,24 @@ class Menu {
             );
             SaveDB.writeDB();
           }
+          // add a professional to the project
+          if (newInput == "5") {
+            print(
+                "Você escolheu adicionar um profissional à um projeto, por favor insira a ID do projeto e o ID do profissional que deseja adicionar:\n");
+            int idProject = int.parse(stdin.readLineSync()!);
+            String idProfessional = stdin.readLineSync()!;
+            DataBase.activeProjects.forEach(
+              (element) {
+                if (element.id == idProject) {
+                  IUser? professional = DataBase.usersDb
+                      .firstWhere((element) => element.id == idProfessional && element.runtimeType == Professional);
+                  element.professionalsPresents.add(professional as Professional);
+                  element.updateStatus();
+                }
+              },
+            );
+            SaveDB.writeDB();
+          }
         }
 
         // ###### Activities area ######
@@ -418,6 +446,7 @@ class Menu {
         }
 
         // ###### User area #######
+        // TODO: Criar funćões da area de usuários
         if (input == "3") {
           print(
               "Você escolheu a área de usuários.\nO que você deseja fazer?\n");
