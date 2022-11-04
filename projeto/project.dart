@@ -1,17 +1,21 @@
 import 'dart:core';
 import 'activity.dart';
 import 'professional.dart';
-import 'student.dart';
+import 'professor.dart';
 import 'user.dart';
+
+enum ProjectStatus { CREATION, INITIATED, IN_PROGRESS, CONCLUDED }
 
 class Project {
   String title;
   int id;
   String description;
-  String advisor;
+  Professor advisor;
   DateTime beginDate;
   DateTime? endDate;
-  String status;
+
+  // ProjectStatus enumStatus = ProjectStatus.closed;
+  ProjectStatus status;
   List<Activity> projectActivities = <Activity>[];
   List<IUser> studentsPresents = <IUser>[];
   List<Professional> professionalsPresents = <Professional>[];
@@ -24,4 +28,16 @@ class Project {
     required this.beginDate,
     required this.status,
   });
+
+  updateStatus() {
+    if (this.studentsPresents.length > 0 && this.projectActivities.length > 0) {
+      this.status = ProjectStatus.INITIATED;
+    }
+
+    this.projectActivities.forEach((element) {
+      if (element.studentsPresents.length > 0) {
+        this.status = ProjectStatus.IN_PROGRESS;
+      }
+    });
+  }
 }

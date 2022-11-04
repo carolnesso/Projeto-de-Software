@@ -1,12 +1,13 @@
 import 'dart:core';
 import 'professional.dart';
+import 'professor.dart';
 import 'user.dart';
 
 class Activity {
   String title;
   int id;
   String description;
-  String advisor;
+  Professor advisor;
   DateTime beginDate;
   DateTime? endDate;
 

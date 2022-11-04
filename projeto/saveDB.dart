@@ -14,15 +14,15 @@ abstract class SaveDB {
           ' Final da bolsa de pesquisa: ${element.researchGrantDeadline}\n\n';
     });
 
-    DataBase.activeProjcts.forEach((element) {
+    DataBase.activeProjects.forEach((element) {
       String studentListString = '';
-      String activitesListString = '';
+      String activitiesListString = '';
       element.studentsPresents.forEach((element) {
         studentListString = studentListString + '${element.id}, ';
       });
 
       element.projectActivities.forEach((element) {
-        activitesListString = activitesListString + '${element.id}, ';
+        activitiesListString = activitiesListString + '${element.id}, ';
       });
       db = db +
           'Projeto ${element.id}:\n' +
@@ -33,16 +33,20 @@ abstract class SaveDB {
           ' Status do projeto: ${element.status}\n' +
           ' Data de conclusão: ${element.endDate ?? ''}\n' +
           ' ID dos estudantes do projeto: ${studentListString}\n' +
-          ' ID das atividades do projeto: ${activitesListString}\n\n';
+          ' ID das atividades do projeto: ${activitiesListString}\n\n';
     });
 
     DataBase.activeActivities.forEach((element) {
       String activitiesListString = '';
+      element.studentsPresents.forEach((element) {
+        activitiesListString = activitiesListString + '${element.id}, ';
+      });
       db = db +
           'Atividade ${element.id}:\n' +
           ' Título: ${element.title}\n' +
           ' Descrição: ${element.description}\n' +
-          ' Orientador: ${element.advisor}\n\n';
+          ' Orientador: ${element.advisor}\n' +
+          ' ID dos estudantes da atividade: ${activitiesListString}\n\n';
     });
 
     final filename = 'DB.txt';

@@ -15,6 +15,10 @@ class Menu {
   bool isRunning = true;
 
   Menu() {
+    _run();
+  }
+
+  void _run() {
     while (isRunning) {
       while (section == null) {
         print(
@@ -27,6 +31,7 @@ class Menu {
 
         String? input = stdin.readLineSync();
 
+        // ######Login area######
         if (input == "1") {
           print("Digite seu CPF:");
           String? login = stdin.readLineSync();
@@ -40,7 +45,6 @@ class Menu {
               }
             },
           );
-
           continue;
         }
 
@@ -165,21 +169,34 @@ class Menu {
             String description = stdin.readLineSync()!;
             print("Insira o ID do professor orientador");
             String advisor = stdin.readLineSync()!;
+            Professor? professor;
+            DataBase.usersDb.forEach((element) {
+              if (element.id == advisor) {
+                if (element.runtimeType == Professor) {
+                  professor = element as Professor;
+                }
+              }
+            });
+            if (professor == null) {
+              print(
+                  "O usuário não é um professor ou não foi encontrado.\nTente novamente.\n");
+              continue;
+            }
             late Project newProject;
             newProject = Project(
               title: title,
               id: currenteProjectID,
               description: description,
-              advisor: advisor,
+              advisor: professor!,
               beginDate: DateTime.now(),
-              status: "Em processo de criação",
+              status: ProjectStatus.INITIATED,
             );
             print("Seu ID de projeto é: " +
                 currenteProjectID.toString() +
                 "\nNecessário salvá-lo para futuras alteracões e/ou consultas.\n");
             currenteProjectID = currenteProjectID + 1;
 
-            DataBase.activeProjcts.add(newProject);
+            DataBase.activeProjects.add(newProject);
             SaveDB.saveDB();
             continue;
           }
@@ -187,7 +204,40 @@ class Menu {
           // edit a existent project;
           // TODO: criar edicão de projeto
           if (newInput == "2") {
-            continue;
+            print("Insira a ID do projeto que deseja editar");
+            int idProject = int.parse(stdin.readLineSync()!);
+            DataBase.activeProjects.forEach(
+              (element) {
+                if (element.id == idProject) {
+                  print("O que você deseja alterar?\n");
+                  print("1 - Alterar o nome");
+                  print("2 - Alterar descricão");
+                  print("3 - Alterar coordenador do projeto");
+                  print("4 - Remover um aluno do projeto");
+                  String? newInput = stdin.readLineSync();
+
+                  // edit project title
+                  if (newInput == "1") {
+                    print("Digite o novo título do projeto");
+                    String? newTile = stdin.readLineSync();
+                    element.title = newTile!;
+                    SaveDB.saveDB();
+
+                  }
+                  // edit project description
+                  if (newInput == "2") {
+                    print("Digite a nova descrição");
+                    String? newDesciption = stdin.readLineSync();
+                    element.description = newDesciption!;
+                    SaveDB.saveDB();
+                  }
+                  // change advisor
+                  if(newInput == "3"){
+                    print("");
+                  }
+                }
+              },
+            );
           }
 
           // add students a select project;
@@ -196,14 +246,17 @@ class Menu {
                 "Você escolheu adicionar um aluno à um projeto, por favor insira a ID do projeto e o ID do aluno que deseja adicionar:\n");
             int idProject = int.parse(stdin.readLineSync()!);
             String idStudent = stdin.readLineSync()!;
-            DataBase.activeProjcts.forEach((element) {
-              print(element.id);
-              if (element.id == idProject) {
-                IUser? student = DataBase.usersDb
-                    .firstWhere((element) => element.id == idStudent);
-                element.studentsPresents.add(student);
-              }
-            });
+            DataBase.activeProjects.forEach(
+              (element) {
+                // print(element.id);
+                if (element.id == idProject) {
+                  IUser? student = DataBase.usersDb
+                      .firstWhere((element) => element.id == idStudent);
+                  element.studentsPresents.add(student);
+                  element.updateStatus();
+                }
+              },
+            );
             SaveDB.saveDB();
           }
 
@@ -213,18 +266,21 @@ class Menu {
                 "Você escolheu adicionar uma atividade à um projeto, por favor insira a ID do projeto e o ID da atividade que deseja adicionar:\n");
             int idProject = int.parse(stdin.readLineSync()!);
             int idActivity = int.parse(stdin.readLineSync()!);
-            DataBase.activeProjcts.forEach((element) {
-              if (element.id == idProject) {
-                Activity? activity = DataBase.activeActivities
-                    .firstWhere((element) => element.id == idActivity);
-                element.projectActivities.add(activity);
-              }
-            });
+            DataBase.activeProjects.forEach(
+              (element) {
+                if (element.id == idProject) {
+                  Activity? activity = DataBase.activeActivities
+                      .firstWhere((element) => element.id == idActivity);
+                  element.projectActivities.add(activity);
+                  element.updateStatus();
+                }
+              },
+            );
             SaveDB.saveDB();
           }
         }
 
-        //###### Activities area ######
+        // ###### Activities area ######
         // TODO: arrumar currente ID das atividades
         if (input == "2") {
           print(
@@ -244,12 +300,25 @@ class Menu {
             String description = stdin.readLineSync()!;
             print("Insira o ID do professor orientador");
             String advisor = stdin.readLineSync()!;
+            Professor? professor;
+            DataBase.usersDb.forEach((element) {
+              if (element.id == advisor) {
+                if (element.runtimeType == Professor) {
+                  professor = element as Professor;
+                }
+              }
+            });
+            if (professor == null) {
+              print(
+                  "O usuário não é um professor ou não foi encontrado.\nTente novamente.\n");
+              continue;
+            }
             late Activity newActivity;
             newActivity = Activity(
               title: title,
               id: currrentActivitiesID,
               description: description,
-              advisor: advisor,
+              advisor: professor!,
               beginDate: DateTime.now(),
             );
             print("Seu ID de atividade é: " +
@@ -270,8 +339,35 @@ class Menu {
 
           // add a student to an activity
           if (newInput == "3") {
-            continue;
+            print(
+                "Você escolheu adicionar um aluno à uma atividade, por favor insira a ID da atividade e o ID do aluno que deseja adicionar:\n");
+            int idActivity = int.parse(stdin.readLineSync()!);
+            String idStudent = stdin.readLineSync()!;
+            DataBase.activeActivities.forEach((element) {
+              print(element.id);
+              if (element.id == idActivity) {
+                IUser? student = DataBase.usersDb
+                    .firstWhere((element) => element.id == idStudent);
+                element.studentsPresents.add(student);
+              }
+            });
+            DataBase.activeProjects.forEach((element) {
+              element.projectActivities.forEach((activity) {
+                if (activity.id == idActivity) {
+                  element.updateStatus();
+                }
+              });
+            });
+            SaveDB.saveDB();
           }
+        }
+
+        // ###### User area #######
+        if (input == "3") {
+          print(
+              "Você escolheu a área de usuários.\nO que você deseja fazer?\n");
+          print("1 - Editar usuário");
+          print("2 - Excluir usuário");
         }
 
         if (input == "0") {
