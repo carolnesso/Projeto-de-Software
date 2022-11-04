@@ -2,7 +2,7 @@ abstract class IUser {
   get id;
   get login;
   get password;
-  get recorveryKey;
+  get recoveryKey;
   get researchGrantBegin;
   get researchGrantDeadline;
 

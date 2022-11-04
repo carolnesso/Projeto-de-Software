@@ -30,7 +30,7 @@ class Project {
   });
 
   updateStatus() {
-    if (this.studentsPresents.length > 0 && this.projectActivities.length > 0) {
+    if (this.studentsPresents.length > 0 && this.projectActivities.length > 0 && this.professionalsPresents.length > 0) {
       this.status = ProjectStatus.INITIATED;
     }
 

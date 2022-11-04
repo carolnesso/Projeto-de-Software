@@ -15,7 +15,7 @@ class Professor implements IUser {
   get id => this._id;
   get login => this._login;
   get password => this._password;
-  get recorveryKey => this._recoveryKey;
+  get recoveryKey => this._recoveryKey;
   get researchGrantBegin => this._researchGrantBegin;
   get researchGrantDeadline => this._researchGrantDeadline;
 
