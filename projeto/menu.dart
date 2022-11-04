@@ -341,13 +341,26 @@ class Menu {
                 "Você escolheu adicionar um profissional à um projeto, por favor insira a ID do projeto e o ID do profissional que deseja adicionar:\n");
             int idProject = int.parse(stdin.readLineSync()!);
             String idProfessional = stdin.readLineSync()!;
+            IUser? professional;
             DataBase.activeProjects.forEach(
               (element) {
                 if (element.id == idProject) {
-                  IUser? professional = DataBase.usersDb
-                      .firstWhere((element) => element.id == idProfessional && element.runtimeType == Professional);
-                  element.professionalsPresents.add(professional as Professional);
-                  element.updateStatus();
+                  DataBase.usersDb.forEach(
+                    (element) {
+                      if (element.id == idProfessional &&
+                          element.runtimeType == Professional) {
+                        professional = element;
+                      }
+                    },
+                  );
+                  if (professional == null) {
+                    print(
+                        "O usuário não é um professor ou não foi encontrado.\nTente novamente.\n");
+                  } else {
+                    element.professionalsPresents
+                        .add(professional as Professional);
+                    element.updateStatus();
+                  }
                 }
               },
             );

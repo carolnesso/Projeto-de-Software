@@ -23,19 +23,19 @@ abstract class SaveDB {
         String professionalsListStrinf = '';
         element.studentsPresents.forEach(
           (element) {
-            studentListString = studentListString + ', ${element.id}, ';
+            studentListString = studentListString + '${element.id}, ';
           },
         );
 
         element.projectActivities.forEach(
           (element) {
-            activitiesListString = activitiesListString + ', ${element.id}, ';
+            activitiesListString = activitiesListString + '${element.id}, ';
           },
         );
 
         element.professionalsPresents.forEach(
           (element) {
-            professionalsListStrinf = professionalsListStrinf + ', ${element.id}';
+            professionalsListStrinf = professionalsListStrinf + '${element.id}, ';
           },
         );
         db = db +
