@@ -280,8 +280,8 @@ class Menu {
                       element.status = ProjectStatus.CONCLUDED;
                       element.endDate = DateTime.now();
                     }
+                    SaveDB.writeDB();
                   }
-                  SaveDB.writeDB();
                 }
               },
             );
