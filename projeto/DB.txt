@@ -13,12 +13,12 @@ Usuário 18211736:
  Final da bolsa de pesquisa: null
 
 Projeto 0:
- Título: teste
- Descrição: testar status concluído
- ID do Orientador: 18211736
- Data de Início: 2022-11-04 01:11:50.873967
- Status do projeto: ProjectStatus.CONCLUDED
- Data de conclusão: 2022-11-04 01:12:06.380350
+ Título: Teste
+ Descrição: testar escrita de TXT
+ ID do Orientador: 00
+ Data de Início: 2022-11-04 12:23:35.190089
+ Status do projeto: ProjectStatus.INITIATED
+ Data de conclusão: 
  ID dos estudantes do projeto: 
- ID das atividades do projeto: 
+ ID dos profissionais do projeto: 18211736 ID das atividades do projeto: 
 
