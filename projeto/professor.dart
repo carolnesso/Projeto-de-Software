@@ -4,11 +4,13 @@ class Professor implements IUser {
   String? _id; //for the id, I've use the college registration number
   String? _login; //for login, I've use the e-mail address
   String? _password;
-  String? _recoveryKey; //a word askedd when I've declared the new user
+  String? _recoveryKey; //a word asked when I've declared the new user
   String?
       _researchGrantBegin; //Day, month and year the student was added to the research grant
   String?
       _researchGrantDeadline; //Day, month and year of the research grant deadline
+  int _paymentValue = 0;
+  int _wallet = 0;
 
   // ####defining getters and setters####
 
@@ -18,6 +20,8 @@ class Professor implements IUser {
   get recoveryKey => this._recoveryKey;
   get researchGrantBegin => this._researchGrantBegin;
   get researchGrantDeadline => this._researchGrantDeadline;
+  get paymentValue => this._paymentValue;
+  get wallet => this._wallet;
 
   String type = "Master degree student";
   Professor({
@@ -63,4 +67,15 @@ class Professor implements IUser {
   set setResearchGrantDeadline(String newResearchGrantDeadline) {
     this._researchGrantDeadline = newResearchGrantDeadline;
   }
+
+  @override
+  set setPaymentValue(int newPaymentValue) {
+    this._paymentValue = newPaymentValue;
+  }
+
+  @override
+  set setWallet(int newWallet) {
+    this._wallet = newWallet;
+  }
+
 }

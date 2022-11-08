@@ -5,34 +5,10 @@ Usuário Professor 00:
  Inicio da bolsa de pesquisa: null
  Final da bolsa de pesquisa: null
 
-Usuário Professional 1811736:
- Login: carolnesso@gmail.com
- Senha: carola
+Usuário Professor 18211736:
+ Login: 01739793439
+ Senha: carolna
  Chave de recuperação: hannah
  Inicio da bolsa de pesquisa: null
  Final da bolsa de pesquisa: null
-
-Usuário Graduation 18211735:
- Login: carolguedes@gmail.com
- Senha: carola
- Chave de recuperação: hannah
- Inicio da bolsa de pesquisa: null
- Final da bolsa de pesquisa: null
-
-Projeto 0:
- Título: Teste
- Descrição: testar funcões presentes no código
- ID do Orientador: 00
- Data de Início: 2022-11-04 14:34:59.305383
- Status do projeto: ProjectStatus.IN_PROGRESS
- Data de conclusão: 
- ID dos estudantes do projeto: 18211735, 
- ID dos profissionais do projeto: 1811736, 
- ID das atividades do projeto: 0, 
-
-Atividade 0:
- Título: Testando
- Descrição: testaremos as funcões do projeto
- Orientador: Instance of 'Professor'
- ID dos estudantes da atividade: , 18211735, 
 

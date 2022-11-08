@@ -9,6 +9,8 @@ class Student implements IUser {
       _researchGrantBegin; //Day, month and year the student was added to the research grant
   String?
       _researchGrantDeadline; //Day, month and year of the research grant deadline
+  int _paymentValue = 0;
+  int _wallet = 0;
 
   // ####defining getters and setters####
 
@@ -18,6 +20,8 @@ class Student implements IUser {
   get recoveryKey => this._recoveryKey;
   get researchGrantBegin => this._researchGrantBegin;
   get researchGrantDeadline => this._researchGrantDeadline;
+  get paymentValue => this._paymentValue;
+  get wallet => this._wallet;
 
   // ####and of getters and setters####
 
@@ -60,4 +64,15 @@ class Student implements IUser {
   set setResearchGrantDeadline(String newResearchGrantDeadline) {
     this._researchGrantDeadline = researchGrantDeadline;
   }
+
+  @override
+  set setPaymentValue(int paymentValue) {
+    this._paymentValue = paymentValue;
+  }
+
+  @override
+  set setWallet(int wallet){
+    this._wallet = wallet;
+  }
+
 }

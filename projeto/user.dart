@@ -5,6 +5,8 @@ abstract class IUser {
   get recoveryKey;
   get researchGrantBegin;
   get researchGrantDeadline;
+  get paymentValue;
+  get wallet;
 
   set setId(String newId);
 
@@ -17,4 +19,8 @@ abstract class IUser {
   set setResearchGrantBegin(String newResearchGrantBegin);
 
   set setResearchGrantDeadline(String newResearchGrantDeadline);
+
+  set setPaymentValue(int paymentValue);
+
+  set setWallet(int wallet);
 }

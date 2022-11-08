@@ -20,7 +20,7 @@ abstract class SaveDB {
       (element) {
         String studentListString = '';
         String activitiesListString = '';
-        String professionalsListStrinf = '';
+        String professionalsListString = '';
         element.studentsPresents.forEach(
           (element) {
             studentListString = studentListString + '${element.id}, ';
@@ -35,7 +35,7 @@ abstract class SaveDB {
 
         element.professionalsPresents.forEach(
           (element) {
-            professionalsListStrinf = professionalsListStrinf + '${element.id}, ';
+            professionalsListString = professionalsListString + '${element.id}, ';
           },
         );
         db = db +
@@ -47,7 +47,7 @@ abstract class SaveDB {
             ' Status do projeto: ${element.status}\n' +
             ' Data de conclusão: ${element.endDate ?? ''}\n' +
             ' ID dos estudantes do projeto: ${studentListString}\n' +
-            ' ID dos profissionais do projeto: ${professionalsListStrinf}\n' +
+            ' ID dos profissionais do projeto: ${professionalsListString}\n' +
             ' ID das atividades do projeto: ${activitiesListString}\n\n';
       },
     );

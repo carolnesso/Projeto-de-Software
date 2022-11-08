@@ -406,15 +406,15 @@ class Menu {
             late Activity newActivity;
             newActivity = Activity(
               title: title,
-              id: currrentActivitiesID,
+              id: currenteActivitiesID,
               description: description,
               advisor: professor!,
               beginDate: DateTime.now(),
             );
             print("Seu ID de atividade é: " +
-                currrentActivitiesID.toString() +
+                currenteActivitiesID.toString() +
                 "\nNecessário salvá-lo para futuras alteracões e/ou consultas.\n");
-            currrentActivitiesID = currrentActivitiesID + 1;
+            currenteActivitiesID = currenteActivitiesID + 1;
 
             DataBase.activeActivities.add(newActivity);
             SaveDB.writeDB();

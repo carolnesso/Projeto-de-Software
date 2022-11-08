@@ -35,6 +35,6 @@ realização de atividades.
 
 [8] O sistema deve suportar o gerenciamento de pagamento de bolsas para os usuários.
 
-[9] O sistema deve suportar controle de acesso através de usuário e senha com possibilidade para recuperação de senha;
+:white_check_mark: O sistema deve suportar controle de acesso através de usuário e senha com possibilidade para recuperação de senha;
 
 [10] Permitir operações de undo e redo de informações referentes aos projetos, atividades e usuários.
