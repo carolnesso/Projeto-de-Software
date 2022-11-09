@@ -5,10 +5,16 @@ Usuário Professor 00:
  Inicio da bolsa de pesquisa: null
  Final da bolsa de pesquisa: null
 
-Usuário Professor 18211736:
- Login: 01739793439
- Senha: carolna
- Chave de recuperação: hannah
- Inicio da bolsa de pesquisa: null
- Final da bolsa de pesquisa: null
+Projeto 0:
+ Título: tst
+ Descrição: testar
+ ID do Orientador: 00
+ Data de Início: 2022-11-09 00:03:58.877559
+ Status do projeto: ProjectStatus.INITIATED
+ Data de conclusão: 
+ ID dos estudantes do projeto: 
+ ID dos profissionais do projeto: 
+ ID das atividades do projeto: 
+
+: 
 

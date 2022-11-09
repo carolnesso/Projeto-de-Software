@@ -38,3 +38,10 @@ realização de atividades.
 :white_check_mark: O sistema deve suportar controle de acesso através de usuário e senha com possibilidade para recuperação de senha;
 
 [10] Permitir operações de undo e redo de informações referentes aos projetos, atividades e usuários.
+
+## Code Smells
+
+* Single responsibility;
+* Muito comentário;
+* Código repetido;
+* Organização da arquitetura;

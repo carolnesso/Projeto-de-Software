@@ -70,6 +70,7 @@ abstract class SaveDB {
     );
 
     final filename = 'DB.txt';
-    await File(filename).writeAsString(db);
+    File file = await File(filename).writeAsString(db);
+
   }
 }

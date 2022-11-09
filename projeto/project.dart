@@ -13,6 +13,7 @@ class Project {
   Professor advisor;
   DateTime beginDate;
   DateTime? endDate;
+  double paymentValue = 400.00;
 
   // ProjectStatus enumStatus = ProjectStatus.closed;
   ProjectStatus status;

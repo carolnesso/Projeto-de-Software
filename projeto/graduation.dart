@@ -1,7 +1,6 @@
 import 'student.dart';
 
 class Graduation extends Student {
-  String type = "Graduation student";
   Graduation({
     required String id,
     required String login,
@@ -12,5 +11,5 @@ class Graduation extends Student {
           login: login,
           password: password,
           recoveryKey: recoveryKey,
-        ) {}
+        );
 }

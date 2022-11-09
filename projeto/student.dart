@@ -4,7 +4,7 @@ class Student implements IUser {
   String? _id; //for the id, I've use the college registration number
   String? _login; //for login, I've use the e-mail address
   String? _password;
-  String? _recoveryKey; //a word askedd when I've declared the new user
+  String? _recoveryKey; //a word asked when I've declared the new user
   String?
       _researchGrantBegin; //Day, month and year the student was added to the research grant
   String?
@@ -66,13 +66,13 @@ class Student implements IUser {
   }
 
   @override
-  set setPaymentValue(int paymentValue) {
-    this._paymentValue = paymentValue;
+  set setPaymentValue(int newPaymentValue) {
+    this._paymentValue = newPaymentValue;
   }
 
   @override
-  set setWallet(int wallet){
-    this._wallet = wallet;
+  set setWallet(int newWallet){
+    this._wallet = newWallet;
   }
 
 }

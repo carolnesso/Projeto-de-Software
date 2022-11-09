@@ -11,5 +11,5 @@ class MastersDegree extends Student {
           login: login,
           password: password,
           recoveryKey: recoveryKey,
-        ) {}
+        );
 }
