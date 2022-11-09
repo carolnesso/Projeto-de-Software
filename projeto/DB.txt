@@ -5,16 +5,27 @@ Usuário Professor 00:
  Inicio da bolsa de pesquisa: null
  Final da bolsa de pesquisa: null
 
+Usuário MastersDegree 18211736:
+ Login: carolnesso
+ Senha: carola
+ Chave de recuperação: hannah
+ Inicio da bolsa de pesquisa: null
+ Final da bolsa de pesquisa: null
+
 Projeto 0:
- Título: tst
+ Título: Tetse
  Descrição: testar
  ID do Orientador: 00
- Data de Início: 2022-11-09 00:03:58.877559
- Status do projeto: ProjectStatus.INITIATED
+ Data de Início: 2022-11-09 01:36:44.524543
+ Status do projeto: ProjectStatus.IN_PROGRESS
  Data de conclusão: 
- ID dos estudantes do projeto: 
+ ID dos estudantes do projeto: 18211736, 
  ID dos profissionais do projeto: 
- ID das atividades do projeto: 
+ ID das atividades do projeto: 0, 
 
-: 
+Atividade 0:
+ Título: executar
+ Descrição: executa teste
+ Orientador: Instance of 'Professor'
+ ID dos estudantes da atividade: 18211736, 
 

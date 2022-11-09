@@ -57,20 +57,19 @@ abstract class SaveDB {
         String activitiesListString = '';
         element.studentsPresents.forEach(
           (element) {
-            activitiesListString = activitiesListString + ', ${element.id}, ';
+            activitiesListString = activitiesListString + '${element.id}, ';
           },
         );
         db = db +
             'Atividade ${element.id}:\n' +
             ' Título: ${element.title}\n' +
             ' Descrição: ${element.description}\n' +
-            ' Orientador: ${element.advisor}\n' +
+            ' Orientador: ${element.advisor.id}\n' +
             ' ID dos estudantes da atividade: ${activitiesListString}\n\n';
       },
     );
 
     final filename = 'DB.txt';
     File file = await File(filename).writeAsString(db);
-
   }
 }

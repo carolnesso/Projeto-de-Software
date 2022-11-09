@@ -9,8 +9,8 @@ class Student implements IUser {
       _researchGrantBegin; //Day, month and year the student was added to the research grant
   String?
       _researchGrantDeadline; //Day, month and year of the research grant deadline
-  int _paymentValue = 0;
-  int _wallet = 0;
+  double _paymentValue = 0;
+  double _wallet = 0;
 
   // ####defining getters and setters####
 
@@ -66,12 +66,12 @@ class Student implements IUser {
   }
 
   @override
-  set setPaymentValue(int newPaymentValue) {
+  set setPaymentValue(double newPaymentValue) {
     this._paymentValue = newPaymentValue;
   }
 
   @override
-  set setWallet(int newWallet){
+  set setWallet(double newWallet){
     this._wallet = newWallet;
   }
 

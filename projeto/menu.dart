@@ -104,12 +104,9 @@ class Menu {
         }
 
         // ###### User area #######
-        // TODO: Criar funćões da area de usuários
+
         if (input == "3") {
-          print(
-              "Você escolheu a área de usuários.\nO que você deseja fazer?\n");
-          print("1 - Editar usuário");
-          print("2 - Excluir usuário");
+          _userArea();
         }
 
         if (input == "0") {
@@ -120,7 +117,6 @@ class Menu {
   }
 
   void _createNewUser() {
-    
     print(
         "Você selecionou criar um usuário\nPor favor, insira os dados pedidos a seguir:");
     print("Insira seu número de matrícula:");
@@ -482,5 +478,12 @@ class Menu {
       );
       SaveDB.writeDB();
     }
+  }
+
+  void _userArea() {
+    // TODO: Criar funćões da area de usuários
+    print("Você escolheu a área de usuários.\nO que você deseja fazer?\n");
+    print("1 - Editar usuário");
+    print("2 - Excluir usuário");
   }
 }

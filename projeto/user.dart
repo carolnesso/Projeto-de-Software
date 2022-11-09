@@ -20,7 +20,7 @@ abstract class IUser {
 
   set setResearchGrantDeadline(String newResearchGrantDeadline);
 
-  set setPaymentValue(int paymentValue);
+  set setPaymentValue(double paymentValue);
 
-  set setWallet(int wallet);
+  set setWallet(double wallet);
 }
