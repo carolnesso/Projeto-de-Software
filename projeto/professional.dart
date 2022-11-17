@@ -2,6 +2,7 @@ import 'user.dart';
 
 class Professional implements IUser {
   String? _id; //for the id, I've use the college registration number
+  String? _name;
   String? _login; //for login, I've use the e-mail address
   String? _password;
   String? _recoveryKey; //a word asked when I've declared the new user
@@ -15,22 +16,33 @@ class Professional implements IUser {
   // ####defining getters and setters####
 
   get id => this._id;
+
+  get name => this._name;
+
   get login => this._login;
+
   get password => this._password;
+
   get recoveryKey => this._recoveryKey;
+
   get researchGrantBegin => this._researchGrantBegin;
+
   get researchGrantDeadline => this._researchGrantDeadline;
+
   get paymentValue => this._paymentValue;
+
   get wallet => this._wallet;
 
   Professional({
     required String id,
+    required String name,
     required String login,
     required String password,
     required String recoveryKey,
     researchGrantBegin,
     researchGrantDeadline,
   })  : _id = id,
+        _name = name,
         _login = login,
         _password = password,
         _recoveryKey = recoveryKey,
@@ -40,6 +52,11 @@ class Professional implements IUser {
   @override
   set setId(String newId) {
     this._id = newId;
+  }
+
+  @override
+  set setName(String newName) {
+    this._name = newName;
   }
 
   @override
@@ -76,5 +93,4 @@ class Professional implements IUser {
   set setWallet(double newWallet) {
     this._wallet = newWallet;
   }
-
 }

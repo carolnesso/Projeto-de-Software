@@ -1,5 +1,6 @@
 abstract class IUser {
   get id;
+  get name;
   get login;
   get password;
   get recoveryKey;
@@ -9,6 +10,8 @@ abstract class IUser {
   get wallet;
 
   set setId(String newId);
+
+  set setName(String newName);
 
   set setLogin(String newLogin);
 

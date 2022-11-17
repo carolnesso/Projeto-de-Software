@@ -7,6 +7,7 @@ abstract class DataBase {
   static List<IUser> usersDb = <IUser>[
     Professor(
       id: "00",
+      name: "Carola",
       login: "11",
       password: "22",
       recoveryKey: "hannahbanana",
