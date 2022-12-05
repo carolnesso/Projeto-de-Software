@@ -1,3 +1,4 @@
+
 import 'user.dart';
 
 class Professor implements IUser {

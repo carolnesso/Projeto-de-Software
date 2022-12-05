@@ -1,14 +1,14 @@
 import 'dart:io';
-import 'activity.dart';
-import 'doctorate.dart';
-import 'graduation.dart';
-import 'master.dart';
-import 'professional.dart';
-import 'professor.dart';
-import 'project.dart';
+import '../models/activity.dart';
+import '../models/doctorate.dart';
+import '../models/graduation.dart';
+import '../models/master.dart';
+import '../models/professional.dart';
+import '../models/professor.dart';
+import '../models/project.dart';
 import 'save_db.dart';
 import 'singleton.dart';
-import 'user.dart';
+import '../models/user.dart';
 import 'dataBase.dart';
 
 class Menu {
@@ -262,6 +262,7 @@ class Menu {
             print("3 - Alterar coordenador do projeto");
             print("4 - Remover um aluno do projeto");
             print("5 - Marcar projeto como concluído");
+            print("6 - Excluir projeto");
             String? newInput = stdin.readLineSync();
 
             // edit project title
@@ -321,6 +322,12 @@ class Menu {
                 element.endDate = DateTime.now();
               }
               SaveDB.writeDB();
+            }
+
+            if (newInput == "6") {
+              print("Digite o ID do projeto a ser deletado:\n");
+              int idProject = int.parse(stdin.readLineSync()!);
+              DataBase.activeProjects.removeWhere((element) => element.id == idProject);
             }
           }
         },
@@ -531,6 +538,21 @@ class Menu {
         print("Pronto, sua nova chave de recuperação está salva!\n");
         SaveDB.writeDB();
       }
+    }
+
+    if (input == "2") {
+      if (!(this.section! is Professor)) {
+        print("Essa ação só pode ser acessada por um Professor!\n");
+        return;
+      }
+      print("Digite o ID do usuário que deseja excluir:\n");
+      String? userID = stdin.readLineSync();
+      print(userID);
+      print(DataBase.usersDb.length);
+      DataBase.usersDb.removeWhere((element) => element.id == userID);
+      print(DataBase.usersDb.length);
+      print("O usuário foi removido com sucesso!");
+      SaveDB.writeDB();
     }
   }
 }

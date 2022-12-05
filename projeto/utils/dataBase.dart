@@ -1,7 +1,7 @@
-import 'activity.dart';
-import 'professor.dart';
-import 'project.dart';
-import 'user.dart';
+import '../models/activity.dart';
+import '../models/professor.dart';
+import '../models/project.dart';
+import '../models/user.dart';
 
 abstract class DataBase {
   static List<IUser> usersDb = <IUser>[

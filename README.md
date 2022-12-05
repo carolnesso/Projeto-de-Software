@@ -44,4 +44,4 @@ realização de atividades.
 * Single responsibility;
 * Muito comentário;
 * Código repetido;
-* Organização da arquitetura;
+* Organização da arquitetura :white_check_mark:

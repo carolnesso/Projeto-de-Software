@@ -4,10 +4,12 @@ import 'dataBase.dart';
 abstract class SaveDB {
   static writeDB() async {
     String db = '';
+    print('==> ${DataBase.usersDb.length}');
     DataBase.usersDb.forEach(
       (element) {
         db = db +
             'Usuário ${element.runtimeType} ${element.id}:\n' +
+            ' Nome: ${element.name}\n' +
             ' Login: ${element.login}\n' +
             ' Senha: ${element.password}\n' +
             ' Chave de recuperação: ${element.recoveryKey}\n' +
@@ -35,7 +37,8 @@ abstract class SaveDB {
 
         element.professionalsPresents.forEach(
           (element) {
-            professionalsListString = professionalsListString + '${element.id}, ';
+            professionalsListString =
+                professionalsListString + '${element.id}, ';
           },
         );
         db = db +
@@ -70,6 +73,6 @@ abstract class SaveDB {
     );
 
     final filename = 'DB.txt';
-    File file = await File(filename).writeAsString(db);
+    await File(filename).writeAsString(db);
   }
 }
