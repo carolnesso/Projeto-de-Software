@@ -22,7 +22,6 @@ class Menu {
   void _run() {
     while (isRunning) {
       while (section == null) {
-        // ###### start menu ######
         print(
             "Bem vindo ao gerenciador de projetos de extenção da UFAL.\nO que deseja fazer hoje?");
         print("\n");
@@ -33,7 +32,6 @@ class Menu {
 
         String? input = stdin.readLineSync();
 
-        // ###### Login area ######
         if (input == "1") {
           print("Digite seu login (CPF/email):");
           String? login = stdin.readLineSync();
@@ -50,12 +48,10 @@ class Menu {
           continue;
         }
 
-        // ###### create a new user ######
         if (input == "2") {
           _createNewUser();
         }
 
-        //recover password
         if (input == "3") {
           print("Digite sua chave de recuperação:");
           String? recoveryKey = stdin.readLineSync();
@@ -72,14 +68,12 @@ class Menu {
           continue;
         }
 
-        //close
         if (input == "0") {
           isRunning = false;
           break;
         }
       }
 
-      // ###### login user menu ######
       while (section != null) {
         print("1 - Área projetos");
         print("2 - Área atividades");
@@ -93,17 +87,14 @@ class Menu {
         print("0 - LogOut");
         String? input = stdin.readLineSync();
 
-        // ###### Project area ######
         if (input == "1") {
           _projectArea();
         }
 
-        // ###### Activities area ######
         if (input == "2") {
           _activitiesArea();
         }
 
-        // ###### User area #######
 
         if (input == "3") {
           _userArea();
@@ -138,7 +129,6 @@ class Menu {
     print("5 - Profissional;");
     String? type = stdin.readLineSync();
     late IUser newUser;
-    // professor
     if (type == "1") {
       newUser = Professor(
         id: id!,
@@ -148,7 +138,6 @@ class Menu {
         recoveryKey: recoveryKey!,
       );
     }
-    // graduation's degree student
     if (type == "2") {
       newUser = Graduation(
         id: id!,
@@ -158,7 +147,6 @@ class Menu {
         recoveryKey: recoveryKey!,
       );
     }
-    // Master's Degree student
     if (type == "3") {
       newUser = MastersDegree(
         id: id!,
@@ -168,7 +156,6 @@ class Menu {
         recoveryKey: recoveryKey!,
       );
     }
-    // PhD student
     if (type == "4") {
       newUser = DoctorateDegree(
         id: id!,
@@ -178,7 +165,6 @@ class Menu {
         recoveryKey: recoveryKey!,
       );
     }
-    // Professional
     if (type == "5") {
       newUser = Professional(
           id: id!,
@@ -189,9 +175,6 @@ class Menu {
     }
     print("Pronto! Novo usuário criado com sucesso!");
     DataBase.usersDb.add(newUser);
-    //if my class wasn't abstract, i will set db as was written bellow
-    // DataBase newDb = DataBase();
-    // newDb.setUsersDb = newUser;
     SaveDB.writeDB();
     return;
   }
@@ -205,7 +188,6 @@ class Menu {
     print("5 - Adicionar um profissional ao projeto");
     String? newInput = stdin.readLineSync();
 
-    // create a new project;
     if (newInput == "1") {
       print(
           "Você escolheu criar projeto. Digite as seguintes informações pedidas:");
@@ -249,7 +231,6 @@ class Menu {
       return;
     }
 
-    // edit a existent project;
     if (newInput == "2") {
       print("Insira a ID do projeto que deseja editar");
       int idProject = int.parse(stdin.readLineSync()!);
@@ -265,21 +246,18 @@ class Menu {
             print("6 - Excluir projeto");
             String? newInput = stdin.readLineSync();
 
-            // edit project title
             if (newInput == "1") {
               print("Digite o novo título do projeto");
               String? newTile = stdin.readLineSync();
               element.title = newTile!;
               SaveDB.writeDB();
             }
-            // edit project description
             if (newInput == "2") {
               print("Digite a nova descrição");
               String? newDesciption = stdin.readLineSync();
               element.description = newDesciption!;
               SaveDB.writeDB();
             }
-            // change advisor
             if (newInput == "3") {
               print("Digite o ID do novo professor orientador");
               String? advisor = stdin.readLineSync();
@@ -301,7 +279,6 @@ class Menu {
               }
               SaveDB.writeDB();
             }
-            // remove a user from the project
             if (newInput == "4") {
               print(
                   "Você escolheu remover um usuário do projeto.\nPor favor, insira o ID do usuário.\n");
@@ -312,7 +289,6 @@ class Menu {
               user.setPaymentValue = user.paymentValue - element.paymentValue;
               SaveDB.writeDB();
             }
-            // mark project as complete
             if (newInput == "5") {
               if (element.status == ProjectStatus.CONCLUDED) {
                 print(
@@ -334,7 +310,6 @@ class Menu {
       );
     }
 
-    // add students a select project;
     if (newInput == "3") {
       print(
           "Você escolheu adicionar um aluno à um projeto, por favor insira a ID do projeto e o ID do aluno que deseja adicionar:\n");
@@ -342,7 +317,6 @@ class Menu {
       String idStudent = stdin.readLineSync()!;
       DataBase.activeProjects.forEach(
         (element) {
-          // print(element.id);
           if (element.id == idProject) {
             IUser? student = DataBase.usersDb
                 .firstWhere((element) => element.id == idStudent);
@@ -356,7 +330,6 @@ class Menu {
       SaveDB.writeDB();
     }
 
-    // add an activities a select project;
     if (newInput == "4") {
       print(
           "Você escolheu adicionar uma atividade à um projeto, por favor insira a ID do projeto e o ID da atividade que deseja adicionar:\n");
@@ -374,7 +347,6 @@ class Menu {
       );
       SaveDB.writeDB();
     }
-    // add a professional to the project
     if (newInput == "5") {
       print(
           "Você escolheu adicionar um profissional à um projeto, por favor insira a ID do projeto e o ID do profissional que deseja adicionar:\n");
@@ -413,7 +385,6 @@ class Menu {
     print("3 - Adicionar um aluno à uma atividade;");
     String? newInput = stdin.readLineSync();
 
-    // create a new activity
     if (newInput == "1") {
       print(
           "Você escolheu criar atividade. Digite as seguintes informações pedidas:");
@@ -457,13 +428,11 @@ class Menu {
       return;
     }
 
-    // edit an existing activity
     // TODO: criar edicão de atividade existente
     if (newInput == "2") {
       return;
     }
 
-    // add a student to an activity
     if (newInput == "3") {
       print(
           "Você escolheu adicionar um aluno à uma atividade, por favor insira a ID da atividade e o ID do aluno que deseja adicionar:\n");

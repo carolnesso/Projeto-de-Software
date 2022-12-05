@@ -15,7 +15,6 @@ class Project {
   DateTime? endDate;
   double paymentValue = 400.00;
 
-  // ProjectStatus enumStatus = ProjectStatus.closed;
   ProjectStatus status;
   List<Activity> projectActivities = <Activity>[];
   List<IUser> studentsPresents = <IUser>[];
