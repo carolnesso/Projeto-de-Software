@@ -41,7 +41,7 @@ realização de atividades.
 
 ## Code Smells
 
-* Single responsibility;
+* Single responsibility :white_check_mark:
 * Muito comentário :white_check_mark:
-* Código repetido;
+* Código repetido 
 * Organização da arquitetura :white_check_mark:

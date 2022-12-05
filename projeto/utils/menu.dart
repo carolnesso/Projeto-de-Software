@@ -95,7 +95,6 @@ class Menu {
           _activitiesArea();
         }
 
-
         if (input == "3") {
           _userArea();
         }
@@ -303,7 +302,8 @@ class Menu {
             if (newInput == "6") {
               print("Digite o ID do projeto a ser deletado:\n");
               int idProject = int.parse(stdin.readLineSync()!);
-              DataBase.activeProjects.removeWhere((element) => element.id == idProject);
+              DataBase.activeProjects
+                  .removeWhere((element) => element.id == idProject);
             }
           }
         },
