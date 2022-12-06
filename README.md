@@ -22,13 +22,13 @@ seguintes pré-requisitos:
 * “Iniciado” para “Em andamento”. O coordenador deve poder confirmar a alocação.
 * “Em andamento” para “Concluído”. O coordenador deve poder alterar o status para “Concluído”, se existir a descrição do projeto e atividades.
 
-[5] Permitir as seguintes consultas:
+:white_check_mark: Permitir as seguintes consultas:
 
 * Consulta por usuário;
 * Consulta por projeto;
 * Consulta por atividade;   
 
-[6] O sistema deve fornecer um relatório de projeto e atividades da unidade acadêmica. 
+:white_check_mark: O sistema deve fornecer um relatório de projeto e atividades da unidade acadêmica. 
 
 [7] O sistema deve permitir o intercambio de usuários entre projetos para
 realização de atividades.
