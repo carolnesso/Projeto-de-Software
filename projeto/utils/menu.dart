@@ -1,8 +1,5 @@
 import 'dart:io';
 import '../models/activity.dart';
-import '../models/doctorate.dart';
-import '../models/graduation.dart';
-import '../models/master.dart';
 import '../models/professional.dart';
 import '../models/professor.dart';
 import '../models/project.dart';
