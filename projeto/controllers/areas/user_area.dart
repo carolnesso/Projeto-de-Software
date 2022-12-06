@@ -1,13 +1,13 @@
 import 'dart:io';
-import '../models/doctorate.dart';
-import '../models/graduation.dart';
-import '../models/master.dart';
-import '../models/professional.dart';
-import '../models/professor.dart';
-import '../models/user.dart';
-import 'dataBase.dart';
-import 'save_db.dart';
-import 'singleton.dart';
+import '../../models/doctorate.dart';
+import '../../models/graduation.dart';
+import '../../models/master.dart';
+import '../../models/professional.dart';
+import '../../models/professor.dart';
+import '../../models/user.dart';
+import '../../database/dataBase.dart';
+import '../../database/save_db.dart';
+import '../../singleton.dart';
 
 abstract class UserArea{
 

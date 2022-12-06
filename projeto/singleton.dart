@@ -1,4 +1,4 @@
-import '../models/user.dart';
+import 'models/user.dart';
 
 int currenteProjectID = 0;
 int currenteActivitiesID = 0;

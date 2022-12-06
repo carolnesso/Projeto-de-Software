@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'activities_area.dart';
-import 'project_area.dart';
-import 'save_db.dart';
-import 'singleton.dart';
-import 'dataBase.dart';
-import 'user_area.dart';
+import 'areas/activities_area.dart';
+import 'areas/project_area.dart';
+import '../database/save_db.dart';
+import '../singleton.dart';
+import '../database/dataBase.dart';
+import 'areas/user_area.dart';
 
 class Menu {
   bool isRunning = true;

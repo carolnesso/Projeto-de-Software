@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import '../models/activity.dart';
-import '../models/professor.dart';
-import '../models/user.dart';
-import 'dataBase.dart';
-import 'save_db.dart';
-import 'singleton.dart';
+import '../../models/activity.dart';
+import '../../models/professor.dart';
+import '../../models/user.dart';
+import '../../database/dataBase.dart';
+import '../../database/save_db.dart';
+import '../../singleton.dart';
 
 abstract class ActivitiesArea {
   static activitiesArea() {
