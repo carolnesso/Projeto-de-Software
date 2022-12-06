@@ -26,6 +26,8 @@ abstract class ProjectArea {
       String title = stdin.readLineSync()!;
       print("Insira uma descrição para o projeto:");
       String description = stdin.readLineSync()!;
+      print("Insira o valor da bolsa:");
+      double? value = double.parse(stdin.readLineSync()!);
       print("Insira o ID do professor orientador");
       String advisor = stdin.readLineSync()!;
       Professor? professor;
@@ -48,6 +50,7 @@ abstract class ProjectArea {
         title: title,
         id: currenteProjectID,
         description: description,
+        paymentValue: value,
         advisor: professor!,
         beginDate: DateTime.now(),
         status: ProjectStatus.INITIATED,

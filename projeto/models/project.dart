@@ -13,8 +13,7 @@ class Project {
   Professor advisor;
   DateTime beginDate;
   DateTime? endDate;
-  //TODO: alterar valor de bolsas
-  double paymentValue = 400.00;
+  double paymentValue;
 
   ProjectStatus status;
   List<Activity> projectActivities = <Activity>[];
@@ -25,6 +24,7 @@ class Project {
     required this.title,
     required this.id,
     required this.description,
+    required this.paymentValue,
     required this.advisor,
     required this.beginDate,
     required this.status,

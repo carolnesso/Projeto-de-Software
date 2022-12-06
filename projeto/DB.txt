@@ -9,20 +9,12 @@ Usuário Professor 00:
 
 Projeto 0:
  Título: Teste
- Descrição: testar projeto
+ Descrição: testar
  ID do Orientador: 00
- Data de Início: 2022-12-06 16:12:50.233318
+ Data de Início: 2022-12-06 16:32:07.457678
  Status do projeto: ProjectStatus.INITIATED
  Data de conclusão: 
  ID dos estudantes do projeto: 
  ID dos profissionais do projeto: 
  ID das atividades do projeto: 
-
-Atividade 0:
- Título: Testar
- Descrição: testar atividade
- ID do Orientador: 00
- Data de Início: 2022-12-06 16:13:23.160939
- Data de conclusão: 
- ID dos estudantes da atividade: 
 
