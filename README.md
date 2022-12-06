@@ -43,5 +43,5 @@ realização de atividades.
 
 * Single responsibility :white_check_mark:
 * Comments :white_check_mark:
-* Large Class
+* Large Class :white_check_mark:
 * Organização da arquitetura :white_check_mark:
