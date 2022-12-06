@@ -13,6 +13,7 @@ class Project {
   Professor advisor;
   DateTime beginDate;
   DateTime? endDate;
+  //TODO: alterar valor de bolsas
   double paymentValue = 400.00;
 
   ProjectStatus status;

@@ -5,6 +5,7 @@ import 'areas/project_area.dart';
 import '../database/save_db.dart';
 import '../singleton.dart';
 import '../database/dataBase.dart';
+import 'areas/search_area.dart';
 import 'areas/user_area.dart';
 
 class Menu {
@@ -98,7 +99,7 @@ class Menu {
         }
 
         if(input == "5") {
-
+          SearchArea.searchArea();
         }
 
         if(input == "6") {
