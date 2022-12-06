@@ -4,7 +4,6 @@ import 'dataBase.dart';
 abstract class SaveDB {
   static writeDB() async {
     String db = '';
-    print('==> ${DataBase.usersDb.length}');
     DataBase.usersDb.forEach(
       (element) {
         db = db +
@@ -67,7 +66,9 @@ abstract class SaveDB {
             'Atividade ${element.id}:\n' +
             ' Título: ${element.title}\n' +
             ' Descrição: ${element.description}\n' +
-            ' Orientador: ${element.advisor.id}\n' +
+            ' ID do Orientador: ${element.advisor.id}\n' +
+            ' Data de Início: ${element.beginDate}\n' +
+            ' Data de conclusão: ${element.endDate ?? ''}\n' +
             ' ID dos estudantes da atividade: ${activitiesListString}\n\n';
       },
     );

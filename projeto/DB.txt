@@ -7,19 +7,13 @@ Usuário Professor 00:
  Final da bolsa de pesquisa: null
 
 Projeto 0:
- Título: Testar Projeto
- Descrição: teste de projeto
+ Título: testar
+ Descrição: teste
  ID do Orientador: 00
- Data de Início: 2022-12-06 13:23:30.100959
+ Data de Início: 2022-12-06 15:01:58.160177
  Status do projeto: ProjectStatus.INITIATED
  Data de conclusão: 
  ID dos estudantes do projeto: 
  ID dos profissionais do projeto: 
  ID das atividades do projeto: 
-
-Atividade 0:
- Título: testar atividade
- Descrição: testar 
- Orientador: 00
- ID dos estudantes da atividade: 
 
