@@ -42,6 +42,6 @@ realização de atividades.
 ## Code Smells
 
 * Single responsibility :white_check_mark:
-* Muito comentário :white_check_mark:
-* Código repetido 
+* Comments :white_check_mark:
+* Large Class
 * Organização da arquitetura :white_check_mark:
