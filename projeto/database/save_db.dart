@@ -1,9 +1,11 @@
 import 'dart:io';
+import '../singleton.dart';
 import 'dataBase.dart';
 
 abstract class SaveDB {
   static writeDB() async {
     String db = '';
+    db = db + 'Dias que passaram ${currenteDay.toString()}\n';
     DataBase.usersDb.forEach(
       (element) {
         db = db +

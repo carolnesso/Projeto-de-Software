@@ -77,7 +77,6 @@ class Menu {
         print("5 - Consultas");
         print("6 - Realizar fazer e desfazer");
         print("7 - Passar dia ");
-        //TODO: Adiciona 1 a variavel current day, percorre a lista de usuarios e pega o valor de paymentValue e adicona a wallet
         print("\n");
         print("0 - LogOut");
         String? input = stdin.readLineSync();
@@ -92,6 +91,23 @@ class Menu {
 
         if (input == "3") {
           UserArea.userArea();
+        }
+
+        if (input == "4") {
+          return;
+        }
+
+        if(input == "5") {
+
+        }
+
+        if(input == "6") {
+          return;
+        }
+
+        if(input == "7") {
+          currenteDay++;
+          print("Dias passados:" + currenteDay.toString());
         }
 
         if (input == "0") {
